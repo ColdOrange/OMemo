@@ -26,6 +26,11 @@ You can have a quick start with OMemo by:
 * jQuery for JavaScript operation
 * jQuery mobile for mobile UI
 
+##About me
+
+I am a college student majored in Software Engineering in XiDian Uniersity. Feel free to contact me with my email <904412343@qq.com>.
+
+
 ##Screen shots
 
 ![MainPage](ScreenShots/MainPage.jpg "MainPage")
