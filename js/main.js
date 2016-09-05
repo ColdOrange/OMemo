@@ -42,7 +42,7 @@ $(function(){
             $('#btnDelete').on('click', function(e){
                 e.preventDefault();
                 var title = $('#memo-title-display').val();
-                app.confirmAndDelete(title);                    
+                app.deleteMemo(title);                    
             });
             $('#btnSaveDisplay').on('click', function(e){
                 e.preventDefault();
@@ -64,7 +64,7 @@ $(function(){
                 e.stopPropagation();
                 var html = $(this).parent("li")[0].innerHTML;
                 var title = html.match(/<h2>(.*?)</)[0].replace("<h2>", "").replace("<", "");
-                app.confirmAndDelete(title);
+                app.deleteMemo(title);
                 $.mobile.changePage('#main-page');
             });
 
@@ -177,20 +177,14 @@ $(function(){
             $.mobile.changePage('#main-page');
         };
 
-        app.confirmAndDelete = function(title) {
-            /*$.mobile.changePage('#popup');
-            $( "#confirm #yes" ).on( "click", function() {*/
-                var memosObj = app.getMemos(),
-                    timesObj = app.getTimes();
-                delete memosObj[title];
-                localStorage['OMemo'] = JSON.stringify(memosObj);
-                delete timesObj[title];
-                localStorage['Time'] = JSON.stringify(timesObj);
-                app.displayMemos();
-            /*});
-            $( "#confirm #cancel" ).on( "click", function() {
-                $( "#confirm #yes" ).off();
-            });*/
+        app.deleteMemo = function(title) {
+            var memosObj = app.getMemos(),
+                timesObj = app.getTimes();
+            delete memosObj[title];
+            localStorage['OMemo'] = JSON.stringify(memosObj);
+            delete timesObj[title];
+            localStorage['Time'] = JSON.stringify(timesObj);
+            app.displayMemos();
         }
 
         app.getCurrentTime = function () { 
